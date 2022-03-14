@@ -1,0 +1,2 @@
+gldas读取数据后的格式都为180*360，且为东经：西经，南纬：北纬格式
+而GRACE数据处理后的grid_data格式为东经：西经，北纬：南纬格式，绘图时也采用grid_data格式，所以须将GLDAS输出数据更改格式，采用函数mask_convert_NS

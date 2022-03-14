@@ -1,0 +1,2 @@
+RL05数据处理替换C20时用C20_RL05.txt文件，读取文件使用gmt_readgsm.m函数
+RL06数据处理替换C20时用TN-07_C20_SLR.txt文件，读取文件使用gmt_readgsm_GRACE_RL06.m函数

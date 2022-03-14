@@ -1,0 +1,360 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>run_script</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-06-05"><meta name="DC.source" content="run_script.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">&#22788;&#29702;GRACE&#25968;&#25454;  %%</a></li><li><a href="#3">&#21046;&#20316;&#25513;&#33180;&#25968;&#25454;(mask)</a></li><li><a href="#4">&#22788;&#29702;GLDAS&#25968;&#25454;</a></li><li><a href="#6">&#32472;&#21046;&#21326;&#21271;&#22320;&#21306;TWS&#31561;&#25928;&#27700;&#39640;&#21464;&#21270;&#22270;,GW&#27700;&#39640;&#21464;&#21270;&#22270;</a></li></ul></div><pre class="codeinput">clc;clear;
+
+addpath(<span class="string">'G:\GRACE\GLDAS_fuction'</span>);
+addpath(<span class="string">'G:\Auxiliary function'</span>);
+addpath(<span class="string">'G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_functions'</span>);
+addpath(<span class="string">'G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_functions\simons\'</span>);
+addpath(<span class="string">'G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064'</span>);
+c11cmn=[-89.5 89.5 -179.5 179.5];
+</pre><h2>&#22788;&#29702;GRACE&#25968;&#25454;  %%<a name="2"></a></h2><pre class="codeinput"><span class="comment">%&#22788;&#29702;grace&#25968;&#25454;,&#25209;&#37327;&#35835;&#21462;&#25968;&#25454;&#65292;&#26367;&#25442;C20,C21,C22,S21,S22&#65292;&#26367;&#25442;&#19968;&#38454;&#39033;&#65292;&#20316;&#27531;&#24046;&#65292;&#21435;&#26465;&#24102;&#65292;&#31227;&#38500;GIA&#25928;&#24212;&#65292;&#39640;&#26031;&#24179;&#28369;&#65292;&#20445;&#23384;&#20026;cs_gsm_csr_swenson_2002_2015_60degree</span>
+<span class="comment">% run('GRACE_Matlab_Toolbox_preprocessing_core.m');</span>
+cs_gsm=load(<span class="string">'G:\Auxiliary function\result\GRACE\cs_gsm_csr_swenson_2002_2015_60degree.mat'</span>);
+grid_gsm=load(<span class="string">'G:\Auxiliary function\result\GRACE\grid_gsm_csr_swenson_2002_2015_60degree.mat'</span>);
+cs_grace=getfield(cs_gsm,<span class="string">'cs_grace'</span>);
+str_year=cell2mat(getfield(cs_gsm,<span class="string">'str_year'</span>)');
+str_month=cell2mat(getfield(cs_gsm,<span class="string">'str_month'</span>)');
+grid_grace=getfield(grid_gsm,<span class="string">'grid_data_grace'</span>);
+
+<span class="comment">% %%&#31354;&#38388;&#22495;&#25187;&#38500;&#27844;&#38706;&#35823;&#24046;&#65292;&#25171;&#24320;&#25991;&#20214;&#20026;cs_gsm&#65292;&#20445;&#23384;&#20026;cs_leakage_oceanremoved_swenson_0km</span>
+<span class="comment">%&#22788;&#29702;&#38470;&#22320;&#25968;&#25454;&#21152;&#36733;ocean&#26684;&#32593;&#65292;&#31227;&#38500;&#28023;&#27915;&#27844;&#28431;&#33267;&#38470;&#22320;&#30340;&#20449;&#21495;&#65292;&#36890;&#24120;&#22788;&#29702;&#38470;&#22320;&#25968;&#25454;&#65292;&#25925;&#40664;&#35748;&#31867;&#22411;&#20026;land</span>
+addpath(<span class="string">'G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_data\msk_files'</span>);
+run(<span class="string">'GRACE_Matlab_Toolbox_LeakageReductionSpatial.m'</span>);
+load (<span class="string">'G:\Auxiliary function\result\GRACE\cs_leakage_oceanremoved_swenson_0km.mat'</span>);
+<span class="comment">% % % % % % % % % %</span>
+<span class="comment">% %%&#29699;&#21327;&#21512;&#25104;&#65288;cs&#36716;&#20026;grid&#65289;&#65292;&#25171;&#24320;&#25991;&#20214;&#20026;&#19978;&#38754;&#30340;cs_gsm_csr_swenson_2002_2015_60degree&#25110;cs_leakage_oceanremoved_swenson_0km&#65288;cs&#25991;&#20214;&#65289;&#65292;&#20445;&#23384;&#20026;grid_data</span>
+run(<span class="string">'GRACE_Matlab_Toolbox_SHGrid.m'</span>);
+load(<span class="string">'G:\Auxiliary function\result\GRACE\grid_data.mat'</span>);<span class="comment">%&#26410;&#22788;&#29702;&#27844;&#38706;&#35823;&#24046;grid</span>
+load(<span class="string">'G:\Auxiliary function\result\GRACE\grid_data_leakage_removed.mat'</span>);<span class="comment">%&#22788;&#29702;&#27844;&#38706;&#35823;&#24046;grid</span>
+<span class="comment">% %%&#29983;&#25104;&#26102;&#38388;&#24207;&#21015;&#65292;&#25171;&#24320;&#25991;&#20214;&#20026;grid_data,&#20445;&#23384;&#20026;time_series(Time series of mass variation in XXX)</span>
+run(<span class="string">'GRACE_Matlab_Toolbox_Grid2Series.m'</span>);
+load(<span class="string">'G:\Auxiliary function\result\GRACE\time_series_amazon.mat'</span>);
+<span class="comment">% %&#32472;&#21046;&#26102;&#38388;&#24207;&#21015;</span>
+plot(time,time_series*100,<span class="string">'-s'</span>);
+xlabel(<span class="string">'Year'</span>);
+ylabel(<span class="string">'Equivalent water height (cm)'</span>);
+title(<span class="string">'Mass variations in the Amazon from GRACE'</span>);
+
+<span class="comment">% %% Harmonic analysis</span>
+<span class="comment">%Do harmonic analysis on time series(&#23545;&#26102;&#38388;&#24207;&#21015;&#36827;&#34892;&#35856;&#27874;&#20998;&#26512;&#65289;,input:time_series</span>
+<span class="comment">%Do harmonic analysis in the spatial domain&#65288;&#22312;&#31354;&#38388;&#22495;&#36827;&#34892;&#35856;&#27874;&#20998;&#26512;&#65289;,input:grid_data, output&#65306;trend.mat</span>
+run <span class="string">GRACE_Matlab_Toolbox_HarmonicAnalysis.m</span>;
+<span class="comment">%plot the trend map &#65288;Trend map of mass variation from GRACE &#65289;</span>
+load(<span class="string">'G:\Auxiliary function\result\GRACE\trend'</span>);
+gmt_grid2map(trend*100,5,<span class="string">'cm/yr'</span>,<span class="string">'Trend map of mass variations from GRACE'</span>)
+</pre><img vspace="5" hspace="5" src="run_script_01.png" style="width:758px;height:386px;" alt=""> <img vspace="5" hspace="5" src="run_script_02.png" style="width:1512px;height:756px;" alt=""> <h2>&#21046;&#20316;&#25513;&#33180;&#25968;&#25454;(mask)<a name="3"></a></h2><p>% % % % % % %</p><pre class="codeinput">clear;clc;
+shp_China_name=<span class="string">'G:\&#21306;&#21010;\&#30465;.shp'</span>;
+shp=shaperead(shp_China_name);
+<span class="comment">%&#21271;&#20140;&#12289;&#22825;&#27941;&#12289;&#27827;&#21271;&#12289;&#23665;&#19996;&#12289;&#27827;&#21335;&#12289;&#23433;&#24509;&#12289;&#27743;&#33487;&#30340;&#36793;&#30028;&#25991;&#20214;&#65288;.mat&#25991;&#20214;&#65292;&#19982;bln&#26684;&#24335;&#30456;&#21516;&#65289;</span>
+boundary_bj_dir=<span class="string">'G:\Auxiliary function\result\boundary\beijing.mat'</span>;
+boundary_tj_dir=<span class="string">'G:\Auxiliary function\result\boundary\tianjin.mat'</span>;
+boundary_hb_dir=<span class="string">'G:\Auxiliary function\result\boundary\hebei.mat'</span>;
+boundary_sd_dir=<span class="string">'G:\Auxiliary function\result\boundary\shandong.mat'</span>;
+boundary_hn_dir=<span class="string">'G:\Auxiliary function\result\boundary\henan.mat'</span>;
+boundary_ah_dir=<span class="string">'G:\Auxiliary function\result\boundary\anhui.mat'</span>;
+boundary_js_dir=<span class="string">'G:\Auxiliary function\result\boundary\jiangsu.mat'</span>;
+
+<span class="comment">%&#21326;&#21271;&#24179;&#21407;&#19968;&#33324;&#36890;&#24120;&#26159;&#21253;&#25324;&#21271;&#20140;&#12289;&#22825;&#27941;&#12289;&#27827;&#21271;&#12289;&#23665;&#19996;&#12289;&#27827;&#21335;&#12289;&#23433;&#24509;&#12289;&#27743;&#33487;&#36825;7&#30465;&#24066;</span>
+<span class="comment">%&#30001;shp&#25991;&#20214;&#29983;&#25104;mat&#25991;&#20214;,&#21046;&#20316;&#20854;&#23545;&#24212;&#30340;mask</span>
+shp_beijing=shp(1);
+shp_tianjin=shp(2);
+shp_hebei=shp(3);
+shp_shandong=shp(16);
+shp_henan=shp(17);
+shp_anhui=shp(13);
+shp_jiangsu=shp(11);
+bj_msk=shp2mask(shp_beijing,boundary_bj_dir);
+tj_msk=shp2mask(shp_tianjin,boundary_tj_dir);
+hb_msk=shp2mask(shp_hebei,boundary_hb_dir);
+sd_msk=shp2mask(shp_shandong,boundary_sd_dir);
+hn_msk=shp2mask(shp_henan,boundary_hn_dir);
+ah_msk=shp2mask(shp_anhui,boundary_ah_dir);
+js_msk=shp2mask(shp_jiangsu,boundary_js_dir);
+hbpy_msk=bj_msk+tj_msk+hb_msk+sd_msk+hn_msk+ah_msk+js_msk;<span class="comment">%&#21046;&#20316;&#21326;&#21271;&#24179;&#21407;&#25513;&#33180;&#25968;&#25454;(mask)&#24182;&#20445;&#23384;</span>
+save_dir_hbpymsk=<span class="string">'G:\Auxiliary function\result\boundary\huabei.mat'</span>;
+save(save_dir_hbpymsk,<span class="string">'hbpy_msk'</span>);
+disp(<span class="string">'save successfully'</span>);
+clear;clc;
+</pre><pre class="codeoutput">save boundary point successfully
+save boundary point successfully
+save boundary point successfully
+save boundary point successfully
+save boundary point successfully
+save boundary point successfully
+save boundary point successfully
+save successfully
+</pre><h2>&#22788;&#29702;GLDAS&#25968;&#25454;<a name="4"></a></h2><p>%&#26681;&#25454;GLDAS&#35745;&#31639;&#22320;&#34920;&#27700;&#21644;&#22303;&#22756;&#27700; %% % % % %  % % % % % % % % % % % %&#22788;&#29702;clm&#25968;&#25454; run('GLDAS_1_clm_grid.m');%&#35835;&#21462;&#25968;&#25454;,grid&#26684;&#24335; run('GLDAS_2_grid2cs.m');%grid&#36716;&#20026;cs&#26684;&#24335; run('GLDAS_4_gaussian_filter.m');%&#24179;&#28369;&#22788;&#29702; run('GLDAS_5_cs2grid.m');%&#22788;&#29702;&#23436;&#25104;&#21518;&#36716;&#20026;grid&#26684;&#24335;</p><pre class="codeinput"><span class="comment">% % %&#22788;&#29702;MOSAIC&#25968;&#25454;</span>
+<span class="comment">% run('GLDAS_1_mosaic_grid.m');</span>
+<span class="comment">% run('GLDAS_2_grid2cs.m');%grid&#36716;&#20026;cs&#26684;&#24335;</span>
+<span class="comment">% run('GLDAS_4_gaussian_filter.m');%&#24179;&#28369;&#22788;&#29702;</span>
+<span class="comment">% run('GLDAS_5_cs2grid.m');%&#22788;&#29702;&#23436;&#25104;&#21518;&#36716;&#20026;grid&#26684;&#24335;</span>
+
+<span class="comment">% % %&#22788;&#29702;NOAH10&#25968;&#25454;</span>
+<span class="comment">% run('GLDAS_1_noah10_grid.m');</span>
+<span class="comment">% run('GLDAS_2_grid2cs.m');%grid&#36716;&#20026;cs&#26684;&#24335;</span>
+<span class="comment">% run('GLDAS_4_gaussian_filter.m');%&#24179;&#28369;&#22788;&#29702;</span>
+<span class="comment">% run('GLDAS_5_cs2grid.m');%&#22788;&#29702;&#23436;&#25104;&#21518;&#36716;&#20026;grid&#26684;&#24335;</span>
+
+<span class="comment">% %&#22788;&#29702;VIC&#25968;&#25454;</span>
+<span class="comment">% run('GLDAS_1_vic_grid.m');</span>
+<span class="comment">% run('GLDAS_2_grid2cs.m');%grid&#36716;&#20026;cs&#26684;&#24335;</span>
+<span class="comment">% run('GLDAS_4_gaussian_filter.m');%&#24179;&#28369;&#22788;&#29702;</span>
+<span class="comment">% run('GLDAS_5_cs2grid.m');%&#22788;&#29702;&#23436;&#25104;&#21518;&#36716;&#20026;grid&#26684;&#24335;</span>
+</pre><p>%&#30001;GRACE,GLDAS&#25968;&#25454;&#35745;&#31639;TWS</p><pre class="codeinput">clear;clc;
+run(<span class="string">'grace_gldas_gw.m'</span>);
+</pre><pre class="codeoutput">Save grid_gw successfully.
+</pre><img vspace="5" hspace="5" src="run_script_03.png" style="width:1536px;height:750px;" alt=""> <h2>&#32472;&#21046;&#21326;&#21271;&#22320;&#21306;TWS&#31561;&#25928;&#27700;&#39640;&#21464;&#21270;&#22270;,GW&#27700;&#39640;&#21464;&#21270;&#22270;<a name="6"></a></h2><pre class="codeinput">clear;clc;
+hbpy_msk=<span class="string">'G:\Auxiliary function\result\boundary\lg_msk.mat'</span>;
+<span class="comment">% amazon_bln='G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_data\boundary_files\amazon_new.bln';</span>
+<span class="comment">% grid_gldas='G:\Auxiliary function\result\GLDAS\CLM\grid_gaussian_clm_10_land.mat';</span>
+<span class="comment">% gldas=load(grid_gldas);</span>
+<span class="comment">% grace=load('G:\Auxiliary function\result\GRACE\grid_data.mat');%&#26410;&#22788;&#29702;&#27844;&#38706;&#35823;&#24046;grid</span>
+gw=load(<span class="string">'G:\Auxiliary function\result\GW\grace_gldas_gw_2002_2015.mat'</span>);<span class="comment">%gw&#65292;cm</span>
+type=<span class="string">'mask'</span>;
+
+<span class="comment">% [time_series]=gmt_grid2series(grid_data,hbpy_msk,type,89.5);</span>
+[time_series]=gmt_grid2series(gw.grid_gw,hbpy_msk,type,89.5);
+<span class="comment">% for i=1:146</span>
+<span class="comment">%     time(i)=str2double(str_year(i,:))+str2double(str_month(i,:))/12;</span>
+<span class="comment">% end</span>
+
+<span class="comment">%&#32472;&#21046;&#21326;&#21271;&#22320;&#21306;&#22320;&#19979;&#27700;&#21464;&#21270;&#26102;&#24207;&#22270;</span>
+<span class="keyword">for</span> i=1:146
+    time(i)=str2double(gw.str_year(i,:))+str2double(gw.str_month(i,:))/12;
+<span class="keyword">end</span>
+plot(time,time_series,<span class="string">'-s'</span>);
+xlabel(<span class="string">'&#24180;'</span>);
+ylabel(<span class="string">'&#31561;&#25928;&#27700;&#39640;(cm)'</span>);
+title(<span class="string">'&#21326;&#21271;&#22320;&#21306;&#22320;&#19979;&#27700;&#21464;&#21270;&#22270;'</span>);
+
+grid_gw=gw.grid_gw;
+grid_sumgw=sum(grid_gw,3);
+grid_data=grid_sumgw.*lg_msk;
+gmt_grid2map(grid_data,max(max(grid_data)),<span class="string">'cm'</span>,<span class="string">'&#21326;&#21271;&#22320;&#21306;&#22320;&#19979;&#27700;&#21464;&#21270;&#22270;'</span>);
+grid=[grid_sumgw(:,181:360) grid_sumgw(:,1:180)];
+gmt_grid2map(grid_sumgw,200,<span class="string">'cm'</span>,<span class="string">'&#20840;&#29699;&#22320;&#19979;&#27700;&#21464;&#21270;&#22270;'</span>);
+</pre><pre class="codeoutput error">&#26410;&#23450;&#20041;&#20989;&#25968;&#25110;&#21464;&#37327; 'lg_msk'&#12290;
+
+&#20986;&#38169; run_script (line 146)
+grid_data=grid_sumgw.*lg_msk;
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clc;clear;
+
+addpath('G:\GRACE\GLDAS_fuction');
+addpath('G:\Auxiliary function');
+addpath('G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_functions');
+addpath('G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_functions\simons\');
+addpath('G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064');
+c11cmn=[-89.5 89.5 -179.5 179.5];
+
+%%  处理GRACE数据  %%
+%处理grace数据,批量读取数据，替换C20,C21,C22,S21,S22，替换一阶项，作残差，去条带，移除GIA效应，高斯平滑，保存为cs_gsm_csr_swenson_2002_2015_60degree
+% run('GRACE_Matlab_Toolbox_preprocessing_core.m');
+cs_gsm=load('G:\Auxiliary function\result\GRACE\cs_gsm_csr_swenson_2002_2015_60degree.mat');
+grid_gsm=load('G:\Auxiliary function\result\GRACE\grid_gsm_csr_swenson_2002_2015_60degree.mat');
+cs_grace=getfield(cs_gsm,'cs_grace');
+str_year=cell2mat(getfield(cs_gsm,'str_year')');
+str_month=cell2mat(getfield(cs_gsm,'str_month')');
+grid_grace=getfield(grid_gsm,'grid_data_grace');
+
+% %%空间域扣除泄露误差，打开文件为cs_gsm，保存为cs_leakage_oceanremoved_swenson_0km
+%处理陆地数据加载ocean格网，移除海洋泄漏至陆地的信号，通常处理陆地数据，故默认类型为land
+addpath('G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_data\msk_files');
+run('GRACE_Matlab_Toolbox_LeakageReductionSpatial.m');
+load ('G:\Auxiliary function\result\GRACE\cs_leakage_oceanremoved_swenson_0km.mat');
+% % % % % % % % % %
+% %%球协合成（cs转为grid），打开文件为上面的cs_gsm_csr_swenson_2002_2015_60degree或cs_leakage_oceanremoved_swenson_0km（cs文件），保存为grid_data
+run('GRACE_Matlab_Toolbox_SHGrid.m');
+load('G:\Auxiliary function\result\GRACE\grid_data.mat');%未处理泄露误差grid
+load('G:\Auxiliary function\result\GRACE\grid_data_leakage_removed.mat');%处理泄露误差grid
+% %%生成时间序列，打开文件为grid_data,保存为time_series(Time series of mass variation in XXX)
+run('GRACE_Matlab_Toolbox_Grid2Series.m');
+load('G:\Auxiliary function\result\GRACE\time_series_amazon.mat');
+% %绘制时间序列
+plot(time,time_series*100,'-s');
+xlabel('Year');
+ylabel('Equivalent water height (cm)');
+title('Mass variations in the Amazon from GRACE');
+
+% %% Harmonic analysis
+%Do harmonic analysis on time series(对时间序列进行谐波分析）,input:time_series
+%Do harmonic analysis in the spatial domain（在空间域进行谐波分析）,input:grid_data, output：trend.mat
+run GRACE_Matlab_Toolbox_HarmonicAnalysis.m;
+%plot the trend map （Trend map of mass variation from GRACE ）
+load('G:\Auxiliary function\result\GRACE\trend');
+gmt_grid2map(trend*100,5,'cm/yr','Trend map of mass variations from GRACE')
+
+
+
+%% 制作掩膜数据(mask)
+% % % % % % % %
+clear;clc;
+shp_China_name='G:\区划\省.shp';
+shp=shaperead(shp_China_name);
+%北京、天津、河北、山东、河南、安徽、江苏的边界文件（.mat文件，与bln格式相同）
+boundary_bj_dir='G:\Auxiliary function\result\boundary\beijing.mat';
+boundary_tj_dir='G:\Auxiliary function\result\boundary\tianjin.mat';
+boundary_hb_dir='G:\Auxiliary function\result\boundary\hebei.mat';
+boundary_sd_dir='G:\Auxiliary function\result\boundary\shandong.mat';
+boundary_hn_dir='G:\Auxiliary function\result\boundary\henan.mat';
+boundary_ah_dir='G:\Auxiliary function\result\boundary\anhui.mat';
+boundary_js_dir='G:\Auxiliary function\result\boundary\jiangsu.mat';
+
+%华北平原一般通常是包括北京、天津、河北、山东、河南、安徽、江苏这7省市
+%由shp文件生成mat文件,制作其对应的mask
+shp_beijing=shp(1);
+shp_tianjin=shp(2);
+shp_hebei=shp(3);
+shp_shandong=shp(16);
+shp_henan=shp(17);
+shp_anhui=shp(13);
+shp_jiangsu=shp(11);
+bj_msk=shp2mask(shp_beijing,boundary_bj_dir);
+tj_msk=shp2mask(shp_tianjin,boundary_tj_dir);
+hb_msk=shp2mask(shp_hebei,boundary_hb_dir);
+sd_msk=shp2mask(shp_shandong,boundary_sd_dir);
+hn_msk=shp2mask(shp_henan,boundary_hn_dir);
+ah_msk=shp2mask(shp_anhui,boundary_ah_dir);
+js_msk=shp2mask(shp_jiangsu,boundary_js_dir);
+hbpy_msk=bj_msk+tj_msk+hb_msk+sd_msk+hn_msk+ah_msk+js_msk;%制作华北平原掩膜数据(mask)并保存
+save_dir_hbpymsk='G:\Auxiliary function\result\boundary\huabei.mat';
+save(save_dir_hbpymsk,'hbpy_msk');
+disp('save successfully');
+clear;clc;
+
+
+%% 处理GLDAS数据
+% %根据GLDAS计算地表水和土壤水
+% %% % % % %  % % % % % % % % % % % 
+% %处理clm数据
+% run('GLDAS_1_clm_grid.m');%读取数据,grid格式
+% run('GLDAS_2_grid2cs.m');%grid转为cs格式
+% run('GLDAS_4_gaussian_filter.m');%平滑处理
+% run('GLDAS_5_cs2grid.m');%处理完成后转为grid格式
+
+
+% % %处理MOSAIC数据
+% run('GLDAS_1_mosaic_grid.m');
+% run('GLDAS_2_grid2cs.m');%grid转为cs格式
+% run('GLDAS_4_gaussian_filter.m');%平滑处理
+% run('GLDAS_5_cs2grid.m');%处理完成后转为grid格式
+
+% % %处理NOAH10数据
+% run('GLDAS_1_noah10_grid.m');
+% run('GLDAS_2_grid2cs.m');%grid转为cs格式
+% run('GLDAS_4_gaussian_filter.m');%平滑处理
+% run('GLDAS_5_cs2grid.m');%处理完成后转为grid格式
+
+% %处理VIC数据
+% run('GLDAS_1_vic_grid.m');
+% run('GLDAS_2_grid2cs.m');%grid转为cs格式
+% run('GLDAS_4_gaussian_filter.m');%平滑处理
+% run('GLDAS_5_cs2grid.m');%处理完成后转为grid格式
+
+%% 
+% %由GRACE,GLDAS数据计算TWS
+clear;clc;
+run('grace_gldas_gw.m');
+
+%% 绘制华北地区TWS等效水高变化图,GW水高变化图
+clear;clc;
+hbpy_msk='G:\Auxiliary function\result\boundary\lg_msk.mat';
+% amazon_bln='G:\fengweiigg-GRACE_Matlab_Toolbox-61c8064\GRACE_data\boundary_files\amazon_new.bln';
+% grid_gldas='G:\Auxiliary function\result\GLDAS\CLM\grid_gaussian_clm_10_land.mat';
+% gldas=load(grid_gldas);
+% grace=load('G:\Auxiliary function\result\GRACE\grid_data.mat');%未处理泄露误差grid
+gw=load('G:\Auxiliary function\result\GW\grace_gldas_gw_2002_2015.mat');%gw，cm
+type='mask';
+
+% [time_series]=gmt_grid2series(grid_data,hbpy_msk,type,89.5);
+[time_series]=gmt_grid2series(gw.grid_gw,hbpy_msk,type,89.5);
+% for i=1:146
+%     time(i)=str2double(str_year(i,:))+str2double(str_month(i,:))/12;
+% end
+
+%绘制华北地区地下水变化时序图
+for i=1:146
+    time(i)=str2double(gw.str_year(i,:))+str2double(gw.str_month(i,:))/12;
+end
+plot(time,time_series,'-s');
+xlabel('年');
+ylabel('等效水高(cm)');
+title('华北地区地下水变化图');
+
+grid_gw=gw.grid_gw;
+grid_sumgw=sum(grid_gw,3);
+grid_data=grid_sumgw.*lg_msk;
+gmt_grid2map(grid_data,max(max(grid_data)),'cm','华北地区地下水变化图');
+grid=[grid_sumgw(:,181:360) grid_sumgw(:,1:180)];
+gmt_grid2map(grid_sumgw,200,'cm','全球地下水变化图');
+
+##### SOURCE END #####
+--></body></html>
